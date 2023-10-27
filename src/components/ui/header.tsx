@@ -17,7 +17,7 @@ const Header = () => {
   const { status, data } = useSession();
 
   return (
-    <Card className="flex justify-between p-[1.875rem]">
+    <Card className="flex items-center justify-between p-[1.875rem]">
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="outline" size="icon">
