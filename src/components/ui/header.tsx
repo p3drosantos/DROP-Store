@@ -101,9 +101,12 @@ const Header = () => {
           </div>
         </SheetContent>
       </Sheet>
-      <h1 className="text-lg font-semibold">
-        <span className="text-primary">DROP</span> Store
-      </h1>
+
+      <Link href="/">
+        <h1 className="text-lg font-semibold">
+          <span className="text-primary">DROP</span> Store
+        </h1>
+      </Link>
 
       <Button variant="outline" size="icon">
         <ShoppingCartIcon />
