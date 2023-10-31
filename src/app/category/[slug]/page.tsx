@@ -29,13 +29,15 @@ const CategoryProducts = async ({ params }: any) => {
         {category.name}
       </Badge>
 
-      <div className="grid grid-cols-2 gap-8">
-        {category.products.map((product) => (
-          <ProductItem
-            key={product.id}
-            product={computeProductTotalPrice(product)}
-          />
-        ))}
+      <div className="flex flex-col items-center justify-center">
+        <div className="grid grid-cols-2 gap-8 px-5">
+          {category.products.map((product) => (
+            <ProductItem
+              key={product.id}
+              product={computeProductTotalPrice(product)}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
