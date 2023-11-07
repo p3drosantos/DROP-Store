@@ -24,7 +24,7 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
           height={0}
           width={0}
           sizes="100vw"
-          className="max-h[70%] max-w[80%] h-auto w-auto"
+          className="h-auto max-h-[70%] w-auto max-w-[80%]"
           style={{ objectFit: "contain" }}
         />
       </div>
