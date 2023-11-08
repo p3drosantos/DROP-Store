@@ -9,17 +9,24 @@ interface CartItemProps {
 }
 
 const CartItem = ({ product }: CartItemProps) => {
+<<<<<<< HEAD
   const { decreaseProductQuantity, increaseProductQuantity } =
     useContext(CartContext);
+=======
+  const { decreaseProductQuantity } = useContext(CartContext);
+>>>>>>> cfa25e1bb15179c825267e1116809e12c8b1e997
 
   const handleDecreaseQuantity = () => {
     decreaseProductQuantity(product.id);
   };
 
+<<<<<<< HEAD
   const handleIncreaseQuantity = () => {
     increaseProductQuantity(product.id);
   };
 
+=======
+>>>>>>> cfa25e1bb15179c825267e1116809e12c8b1e997
   return (
     <div className="flex items-center justify-between ">
       <div className="flex items-center gap-2">
