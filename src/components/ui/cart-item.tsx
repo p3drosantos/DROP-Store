@@ -9,8 +9,11 @@ interface CartItemProps {
 }
 
 const CartItem = ({ product }: CartItemProps) => {
-  const { decreaseProductQuantity, increaseProductQuantity } =
-    useContext(CartContext);
+  const {
+    decreaseProductQuantity,
+    increaseProductQuantity,
+    removeProductFromCart,
+  } = useContext(CartContext);
 
   const handleDecreaseQuantity = () => {
     decreaseProductQuantity(product.id);
@@ -86,6 +89,3 @@ const CartItem = ({ product }: CartItemProps) => {
   );
 };
 export default CartItem;
-function removeProductFromCart(id: string) {
-  throw new Error("Function not implemented.");
-}
