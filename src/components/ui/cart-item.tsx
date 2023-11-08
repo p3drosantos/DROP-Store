@@ -16,7 +16,6 @@ const CartItem = ({ product }: CartItemProps) => {
     decreaseProductQuantity(product.id);
   };
 
-<<<<<<< HEAD
   const handleIncreaseQuantity = () => {
     increaseProductQuantity(product.id);
   };
@@ -25,8 +24,6 @@ const CartItem = ({ product }: CartItemProps) => {
     removeProductFromCart(product.id);
   };
 
-=======
->>>>>>> cfa25e1bb15179c825267e1116809e12c8b1e997
   return (
     <div className="flex items-center justify-between ">
       <div className="flex items-center gap-2">
@@ -89,3 +86,6 @@ const CartItem = ({ product }: CartItemProps) => {
   );
 };
 export default CartItem;
+function removeProductFromCart(id: string) {
+  throw new Error("Function not implemented.");
+}
