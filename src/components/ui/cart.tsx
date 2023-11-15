@@ -4,12 +4,15 @@ import { useContext } from "react";
 import { CartContext } from "@/providers/cart";
 import CartItem from "./cart-item";
 import { computeProductTotalPrice } from "@/helpers/product";
+import { Separator } from "./separator";
+import { ScrollArea } from "./scroll-area";
+import { Button } from "./button";
 
 const Cart = () => {
-  const { products } = useContext(CartContext);
+  const { products, subtotal, total, totalDiscoount } = useContext(CartContext);
 
   return (
-    <div className=" flex flex-col gap-8">
+    <div className=" flex h-full flex-col gap-8">
       <Badge
         className="w-fit gap-1 border-2 border-primary py-[0.375rem] text-base uppercase"
         variant="outline"
@@ -18,19 +21,46 @@ const Cart = () => {
         Carrinho
       </Badge>
 
-      <div className="flex h-full flex-col gap-8">
-        {products.length > 0 ? (
-          products.map((product) => (
-            <CartItem
-              key={product.id}
-              product={computeProductTotalPrice(product as any) as any}
-            />
-          ))
-        ) : (
-          <p className="text-center font-semibold opacity-40">
-            Carrinho vazio.
-          </p>
-        )}
+      <div className="flex h-full flex-col gap-5 overflow-hidden">
+        <ScrollArea className="h-full">
+          <div className="flex h-full flex-col gap-6">
+            {products.length > 0 ? (
+              products.map((product) => (
+                <CartItem
+                  key={product.id}
+                  product={computeProductTotalPrice(product as any) as any}
+                />
+              ))
+            ) : (
+              <p className="text-center font-semibold opacity-40">
+                Carrinho vazio.
+              </p>
+            )}
+          </div>
+        </ScrollArea>
+      </div>
+
+      <div className="flex flex-col gap-3">
+        <Separator />
+
+        <div className="flex items-center justify-between text-xs">
+          <p>Subtotal</p>
+          <p>R$ {subtotal.toFixed(2)}</p>
+        </div>
+        <div className="flex items-center justify-between text-xs">
+          <p>Entrega</p>
+          <p>GRÁTIS</p>
+        </div>
+        <div className="flex items-center justify-between text-xs">
+          <p>Descontos</p>
+          <p>R$ {totalDiscoount.toFixed(2)}</p>
+        </div>
+        <div className="flex items-center justify-between text-sm font-bold">
+          <p>Total</p>
+          <p>R$ {total.toFixed(2)}</p>
+        </div>
+
+        <Button className="mt-7 font-bold uppercase">Finalizar Compra</Button>
       </div>
     </div>
   );
