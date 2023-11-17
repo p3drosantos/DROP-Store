@@ -13,18 +13,23 @@ export const createCheckout = async (products: CartProduct[]) => {
     mode: "payment",
     success_url: "http://localhost:3000",
     cancel_url: "http://localhost:3000",
-    line_items: products.map((product) => ({
-      price_data: {
-        currency: "brl",
-        product_data: {
-          name: product.name,
-          description: product.description,
-          images: [product.imageUrls[0]],
+    metadata: {
+      products: JSON.stringify(products),
+    },
+    line_items: products.map((product) => {
+      return {
+        price_data: {
+          currency: "brl",
+          product_data: {
+            name: product.name,
+            description: product.description,
+            images: product.imageUrls,
+          },
+          unit_amount: product.totalPrice * 100,
         },
-        unit_amount: product.totalPrice * 100,
-      },
-      quantity: product.quantity,
-    })),
+        quantity: product.quantity,
+      };
+    }),
   });
 
   return checkout;
