@@ -24,8 +24,6 @@ export const POST = async (request: Request) => {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as any;
 
-    console.log(session.metadata.orderId);
-
     const sessionWithLineItems = await stripe.checkout.sessions.retrieve(
       event.data.object.id,
       {
