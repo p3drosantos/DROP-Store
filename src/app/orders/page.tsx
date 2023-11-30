@@ -21,7 +21,11 @@ const OrderPage = async () => {
       userId: session.user.id,
     },
     include: {
-      orderProducts: true,
+      orderProducts: {
+        include: {
+          product: true,
+        },
+      },
     },
   });
 
