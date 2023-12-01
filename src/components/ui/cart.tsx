@@ -1,4 +1,4 @@
-import { ShoppingCartIcon } from "lucide-react";
+import { Car, ShoppingCartIcon } from "lucide-react";
 import { Badge } from "./badge";
 import { useContext } from "react";
 import { CartContext } from "@/providers/cart";
@@ -11,11 +11,12 @@ import { loadStripe } from "@stripe/stripe-js";
 import { createCheckout } from "@/actions/checkout";
 import { createOrder } from "@/actions/order";
 import { useSession } from "next-auth/react";
+import CartTotal from "./cartTotal";
 
 const Cart = () => {
   const { data } = useSession();
 
-  const { products, subtotal, total, totalDiscoount } = useContext(CartContext);
+  const { products } = useContext(CartContext);
 
   const handleFinishPurchaseClick = async () => {
     if (!data?.user) {
@@ -63,24 +64,7 @@ const Cart = () => {
 
       {products.length > 0 && (
         <div className="flex flex-col gap-3">
-          <Separator />
-
-          <div className="flex items-center justify-between text-xs">
-            <p>Subtotal</p>
-            <p>R$ {subtotal.toFixed(2)}</p>
-          </div>
-          <div className="flex items-center justify-between text-xs">
-            <p>Entrega</p>
-            <p>GRÁTIS</p>
-          </div>
-          <div className="flex items-center justify-between text-xs">
-            <p>Descontos</p>
-            <p>R$ {totalDiscoount.toFixed(2)}</p>
-          </div>
-          <div className="flex items-center justify-between text-sm font-bold">
-            <p>Total</p>
-            <p>R$ {total.toFixed(2)}</p>
-          </div>
+          <CartTotal />
 
           <Button
             className="mt-7 font-bold uppercase"
