@@ -30,7 +30,7 @@ const CartItem = ({ product }: CartItemProps) => {
   return (
     <div className="flex items-center justify-between ">
       <div className="flex items-center gap-2">
-        <div className="flex h-[77px] w-[77px] items-center justify-center rounded-lg bg-accent">
+        <div className="flex h-[77px] w-[77px] items-center justify-center rounded-lg bg-accent lg:h-[120px] lg:w-[120px]">
           <Image
             src={product.imageUrls[0]}
             width={0}
@@ -41,27 +41,27 @@ const CartItem = ({ product }: CartItemProps) => {
             className="h-auto max-h-[80%] w-auto max-w-[70%]"
           />
         </div>
-        <div className="flex flex-col">
-          <p className=" text-sm">{product.name}</p>
+        <div className="flex flex-col gap-1 lg:gap-2">
+          <p className="text-xs lg:text-sm">{product.name}</p>
           <div className="flex items-center gap-2">
-            <p className="text-sm font-bold">
+            <p className="text-sm font-bold lg:text-base">
               R$ {product.totalPrice.toFixed(2)}
             </p>
             {product.discountPercentage > 0 && (
-              <p className=" text-xs line-through opacity-75">
+              <p className="text-xs line-through opacity-75 lg:text-sm">
                 R$ {Number(product.basePrice).toFixed(2)}
               </p>
             )}
           </div>
 
-          <div className="mt-1 flex items-center gap-1">
+          <div className="mt-1 flex items-center gap-1 lg:gap-3">
             <Button
               onClick={handleDecreaseQuantity}
               size="icon"
               variant="outline"
-              className="h-6 w-6"
+              className="h-8 w-8 lg:h-9 lg:w-9"
             >
-              <ChevronLeft size={16} />
+              <ChevronLeft className="h-4 w-4 lg:h-5 lg:w-5" />
             </Button>
 
             <span className=" text-xs">{product.quantity}</span>
@@ -70,9 +70,9 @@ const CartItem = ({ product }: CartItemProps) => {
               onClick={handleIncreaseQuantity}
               size="icon"
               variant="outline"
-              className="h-6 w-6"
+              className="h-8 w-8 lg:h-9 lg:w-9"
             >
-              <ChevronRight size={16} />
+              <ChevronRight className="h-4 w-4 lg:h-5 lg:w-5" />
             </Button>
           </div>
         </div>
@@ -83,7 +83,7 @@ const CartItem = ({ product }: CartItemProps) => {
         size={"sm"}
         className=" hover:bg-opacity-75"
       >
-        <Minus size={12} color="red" />
+        <Minus className="h-4 w-4 lg:h-5 lg:w-5" color="red" />
       </Button>
     </div>
   );
