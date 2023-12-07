@@ -14,6 +14,7 @@ const ProductList = ({ products }: ProductListProps) => {
           <ProductItem
             key={product.id}
             product={computeProductTotalPrice(product)}
+            className="w-[156px]"
           />
         </div>
       ))}
