@@ -63,7 +63,7 @@ export default async function Home() {
           <PromoBanner
             src="/banner-home-02.png"
             alt="Até 55% de desconto em mouses"
-            className="w-0 flex-1"
+            className="flex-1 lg:w-0"
           />
 
           <PromoBanner
