@@ -84,6 +84,12 @@ export default async function Home() {
           className="lg:hidden"
         />
 
+        <PromoBanner
+          src="/banner-free-shipping.png"
+          alt="Frete grátis para todo o Brasil"
+          className="hidden lg:block"
+        />
+
         <div className="flex flex-col gap-3 lg:gap-5">
           <SectionTitle className=" pl-5">Mouses</SectionTitle>
           <ProductList products={mouses} />
