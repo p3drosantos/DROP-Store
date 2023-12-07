@@ -16,19 +16,18 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
   };
 
   return (
-    <div className="flex flex-col">
-      <div className="flex h-[380px] w-full items-center justify-center bg-accent">
+    <div className=" flex flex-col lg:w-[60%]">
+      <div className="flex h-[380px] w-full items-center justify-center bg-accent lg:h-full lg:rounded-lg">
         <Image
           src={currentImage}
           alt={name}
           height={0}
           width={0}
           sizes="100vw"
-          className="h-auto max-h-[70%] w-auto max-w-[80%]"
-          style={{ objectFit: "contain" }}
+          className="h-auto max-h-[70%] w-auto max-w-[80%] object-contain"
         />
       </div>
-      <div className=" mt-8 grid grid-cols-4 gap-4 px-5">
+      <div className=" mt-8 grid grid-cols-4 gap-4 px-5 lg:px-0">
         {imageUrls.map((imageUrl) => (
           <button
             key={imageUrl}
@@ -43,7 +42,7 @@ const ProductImages = ({ imageUrls, name }: ProductImagesProps) => {
               height={0}
               width={0}
               sizes="100vw"
-              className="max-h[70%] max-w[80%] h-auto w-auto"
+              className="h-auto max-h-[70%] w-auto max-w-[80%]"
               style={{ objectFit: "contain" }}
             />
           </button>

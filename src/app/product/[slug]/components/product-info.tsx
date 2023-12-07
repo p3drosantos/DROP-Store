@@ -28,23 +28,23 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
   };
 
   return (
-    <div className="flex flex-col px-5">
-      <h2 className="text-lg">{product.name}</h2>
+    <div className="flex flex-col px-5 lg:w-[40%] lg:rounded-lg lg:bg-accent lg:p-10">
+      <h2 className="text-lg lg:text-2xl">{product.name}</h2>
 
       <div className="flex items-center gap-2">
-        <h1 className="text-xl font-bold">
+        <h1 className="text-xl font-bold lg:text-3xl">
           R$ {product.totalPrice.toFixed(2)}
         </h1>
         {product.discountPercentage > 0 && (
-          <div className="rounded-lg bg-primary px-2 py-1 text-xs font-semibold text-white">
+          <div className="rounded-lg bg-primary px-2 py-1 text-sm font-semibold text-white lg:text-base">
             {product.discountPercentage}% OFF
           </div>
         )}
       </div>
       {product.discountPercentage > 0 && (
-        <div className="flex gap-2">
-          <span className="text-base opacity-75">De:</span>
-          <p className="text-base line-through opacity-75">
+        <div className=" flex gap-2 text-sm lg:text-base">
+          <span className=" opacity-75">De:</span>
+          <p className=" line-through opacity-75">
             R$ {Number(product.basePrice).toFixed(2)}
           </p>
         </div>
@@ -74,7 +74,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
         Adicionar ao Carrinho
       </Button>
 
-      <div className=" mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2">
+      <div className=" mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2 lg:bg-[#2a2a2a]">
         <div className="flex items-center gap-2">
           <TruckIcon size={24} />
           <div className="flex flex-col">
