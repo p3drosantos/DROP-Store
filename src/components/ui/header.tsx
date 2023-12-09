@@ -22,8 +22,15 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { Separator } from "./separator";
 import Cart from "./cart";
+import { useContext } from "react";
+import { CartContext } from "@/providers/cart";
+
 const Header = () => {
   const { status, data } = useSession();
+
+  const { totalItemsCart } = useContext(CartContext);
+
+  const cartQuantityItems = totalItemsCart;
 
   return (
     <Card className="flex items-center justify-between p-[1.875rem]">
@@ -140,7 +147,12 @@ const Header = () => {
 
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline" size="icon">
+          <Button variant="outline" size="icon" className="relative">
+            {cartQuantityItems > 0 && (
+              <span className="absolute right-[calc(-1.25rem/2)] top-[calc(-1.25rem/2)] flex h-6 w-6 items-center justify-center rounded-lg bg-primary text-sm font-bold">
+                {cartQuantityItems}
+              </span>
+            )}
             <ShoppingCartIcon />
           </Button>
         </SheetTrigger>
