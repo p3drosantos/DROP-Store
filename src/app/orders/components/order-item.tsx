@@ -53,34 +53,60 @@ const OrderItem = ({ order, number }: OrderItemProps) => {
         <Accordion type="single" className="w-full" collapsible>
           <AccordionItem value={order.id}>
             <AccordionTrigger>
-              <div className="flex flex-col gap-1  text-left text-sm font-bold uppercase">
-                Número do Pedido
-                <p className=" text-xs font-light opacity-70">
-                  #{number.toString().padStart(3, "0")}
-                </p>
+              <div className="flex text-left lg:w-full ">
+                <div className="flex flex-1 flex-col gap-1 text-sm font-bold uppercase   lg:text-base">
+                  Número do Pedido
+                  <p className=" text-xs font-light opacity-70 lg:text-sm">
+                    #{number.toString().padStart(3, "0")}
+                  </p>
+                </div>
+                <div className="hidden flex-1 font-bold lg:block">
+                  <p className="text-xs uppercase lg:text-sm">Status</p>
+                  <p className="text-xs text-[#8162ff] lg:text-sm">
+                    {getOrderStatus(order.status)}
+                  </p>
+                </div>
+
+                <div className="hidden flex-1 lg:block">
+                  <p className="text-xs font-bold uppercase lg:text-sm">Data</p>
+                  <p className="text-xs opacity-60 lg:text-sm ">
+                    {format(order.createdAt, "d/MM/y")}
+                  </p>
+                </div>
+
+                <div className="hidden flex-1 lg:block">
+                  <p className="text-sx font-bold uppercase lg:text-sm">
+                    Pagamento
+                  </p>
+                  <p className="text-sx opacity-60 lg:text-sm">Cartão</p>
+                </div>
               </div>
             </AccordionTrigger>
 
             <AccordionContent>
-              <div className="flex flex-col gap-4">
-                <div className="flex items-center justify-between">
+              <div className="flex flex-col gap-4 ">
+                <div className="flex items-center justify-between lg:hidden">
                   <div className="font-bold">
-                    <p className="uppercase">Status</p>
-                    <p className="text-[#8162ff]">
+                    <p className="text-xs uppercase lg:text-sm">Status</p>
+                    <p className="text-xs text-[#8162ff] lg:text-sm">
                       {getOrderStatus(order.status)}
                     </p>
                   </div>
 
                   <div>
-                    <p className="font-bold uppercase">Data</p>
-                    <p className="opacity-60">
+                    <p className="text-xs font-bold uppercase lg:text-sm">
+                      Data
+                    </p>
+                    <p className="text-xs opacity-60 lg:text-sm ">
                       {format(order.createdAt, "d/MM/y")}
                     </p>
                   </div>
 
                   <div>
-                    <p className="font-bold uppercase">Pagamento</p>
-                    <p className="opacity-60">Cartão</p>
+                    <p className="text-sx font-bold uppercase lg:text-sm">
+                      Pagamento
+                    </p>
+                    <p className="text-sx opacity-60 lg:text-sm">Cartão</p>
                   </div>
                 </div>
                 {order.orderProducts.map((orderProduct) => (
@@ -93,22 +119,22 @@ const OrderItem = ({ order, number }: OrderItemProps) => {
                 <div className="flex w-full flex-col gap-1 text-xs ">
                   <Separator />
 
-                  <div className="flex w-full justify-between py-3">
+                  <div className="flex w-full justify-between py-3 lg:text-sm">
                     <p>Subtotal</p>
                     <p>R$ {subtotal.toFixed(2)}</p>
                   </div>
                   <Separator />
-                  <div className="flex w-full justify-between py-3">
+                  <div className="flex w-full justify-between py-3 lg:text-sm">
                     <p>Entrega</p>
                     <p>GRÀTIS</p>
                   </div>
                   <Separator />
-                  <div className="flex w-full justify-between py-3">
+                  <div className="flex w-full justify-between py-3 lg:text-sm">
                     <p>Descontos</p>
                     <p>R$ {totalDiscounts.toFixed(2)}</p>
                   </div>
                   <Separator />
-                  <div className="flex w-full justify-between py-3 font-bold uppercase">
+                  <div className="flex w-full justify-between py-3 text-sm font-bold uppercase lg:text-base">
                     <p>Total</p>
                     <p>R$ {total.toFixed(2)}</p>
                   </div>
