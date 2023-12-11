@@ -5,6 +5,8 @@ import { ProductWithTotalPrice } from "@/helpers/product";
 import { CartContext } from "@/providers/cart";
 import { ChevronLeft, ChevronRight, TruckIcon } from "lucide-react";
 import { useContext, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface ProductInfoProps {
   product: ProductWithTotalPrice;
@@ -17,6 +19,18 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
 
   const handleAddProductToCart = () => {
     addProductToCart({ ...product, quantity });
+    toast.success("Produto adicionado ao carrinho!  ", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const handleDecreaseQuantity = () => {
@@ -71,6 +85,7 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
         className="mt-8 font-bold uppercase"
         onClick={handleAddProductToCart}
       >
+        <ToastContainer />
         Adicionar ao Carrinho
       </Button>
 
