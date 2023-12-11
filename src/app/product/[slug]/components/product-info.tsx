@@ -3,8 +3,10 @@
 import { Button } from "@/components/ui/button";
 import { ProductWithTotalPrice } from "@/helpers/product";
 import { CartContext } from "@/providers/cart";
-import { ChevronLeft, ChevronRight, TruckIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, TruckIcon, Loader2 } from "lucide-react";
 import { useContext, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface ProductInfoProps {
   product: ProductWithTotalPrice;
@@ -12,11 +14,34 @@ interface ProductInfoProps {
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
   const [quantity, setQuantity] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const { addProductToCart } = useContext(CartContext);
 
   const handleAddProductToCart = () => {
     addProductToCart({ ...product, quantity });
+
+    setTimeout(() => {
+      setLoading(true);
+      // window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 500);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    setTimeout(() => {
+      toast.success("Produto adicionado ao carrinho!  ", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }, 1000);
   };
 
   const handleDecreaseQuantity = () => {
@@ -71,7 +96,13 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
         className="mt-8 font-bold uppercase"
         onClick={handleAddProductToCart}
       >
-        Adicionar ao Carrinho
+        {loading ? (
+          <Loader2 size={18} className=" animate-spin" />
+        ) : (
+          <div>
+            <ToastContainer /> <p>Adicionar ao Carrinho</p>
+          </div>
+        )}
       </Button>
 
       <div className=" mt-5 flex items-center justify-between rounded-lg bg-accent px-5 py-2 lg:bg-[#2a2a2a]">
